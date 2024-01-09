@@ -1,0 +1,7 @@
+docker-compose.yaml
+db_secrets.py
+/plugins
+/logs
+/GEI_venv
+/config
+*__pycache__
