@@ -2,7 +2,7 @@ from datetime import datetime, timedelta, date
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-from airflow.models import Variable
+from airflow.models import Variable, XCom
 import psycopg2, json
 
 # import os
@@ -32,13 +32,11 @@ dag = DAG(
 
 
 def calculate_subs():
-    countries = Variable.get("COUNTRIES").split(',')
+    countries = Variable.get("COUNTRIES").split(",")
 
     row_count = 0
     for country in countries:
-        host = Variable.get("COUNTRY_HOST").replace(
-            "ZZZ", country
-        )
+        host = Variable.get("COUNTRY_HOST").replace("ZZZ", country)
         user = Variable.get("COUNTRY_USER")
         password = Variable.get("COUNTRY_PASSWORD")
         conn = psycopg2.connect(
@@ -54,7 +52,7 @@ def calculate_subs():
         conn.close()
     result = {"count": row_count}
     logging.info(result)
-    return json.dumps(result)
+    Variable.set(key="subs_count", value=result)
 
 
 calculate_subs_task = PythonOperator(
