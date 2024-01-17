@@ -5,3 +5,4 @@ db_secrets.py
 /GEI_venv
 /config
 *__pycache__
+.env
