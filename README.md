@@ -36,3 +36,17 @@ We ran into troubles when the EC2 instances available could not handle Docker, d
 What if we just use lambda's to run when the API is accessed every second through API Gateway, query the databases, and return the required data?
 
 ![Plan 3 diagram](/imgs/three.png)
+
+## Challenges:
+- Creating log statements and understanding CloudWatch logs to see where errors were occuring.
+- Data not having timestamps when being generated in the databases made it difficult to understand what were the most recent additions.
+- Learning how to deploy packages onto lambda such as psycopg2.
+
+## Successes:
+- We were very flexible and pivoted quickly and efficiently when an approach wasn't working for us.
+- Identified bottlenecks quickly and solved them.
+- Staying within the AWS ecosystem to make it easy for data to move around.
+
+## Looking forward:
+If we had time to extend the project or do it again, we would likely add the use of DynamoDB to make some transformations easier and more efficient.
+We would also look through the lambda's to refactor.
