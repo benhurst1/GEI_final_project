@@ -37,6 +37,10 @@ What if we just use lambda's to run when the API is accessed every second throug
 
 ![Plan 3 diagram](/imgs/three.png)
 
+And this is what the final dashboard looked like being updated every second.
+
+![Working dashboard](/imgs/forage.gif)
+
 ## Challenges:
 - Creating log statements and understanding CloudWatch logs to see where errors were occuring.
 - Data not having timestamps when being generated in the databases made it difficult to understand what were the most recent additions.
